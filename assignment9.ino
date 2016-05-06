@@ -64,4 +64,13 @@ void loop() {
   if (rightDistance < 30 && rightDistance > 0 && leftDistance < 30 && leftDistance > 0) {
     folkracer.setAngle(0);
   }
+  if (rightDistance < 30 && rightDistance > 0 && leftDistance == 0) {
+    folkracer.setAngle(-60);
+  }
+  if (rightDistance > 30 && leftDistance == 0) {
+    folkracer.setAngle(0);
+  }
+  if (leftDistance < 30 && leftDistance > 0) {
+    folkracer.setAngle(60);
+  }
 }
