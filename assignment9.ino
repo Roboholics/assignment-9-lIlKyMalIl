@@ -35,9 +35,9 @@ void setup() {
 
 void loop() {
   folkracer.updateMotors(); //διατήρησε την ταχύτητα του αυτοκινήτου σταθερή
-  int frontDistance = sonarFront.getMedianDistance(3); //μέτρησε την απόσταση (φιλτράρισε 3 μετρήσεις) και αποθήκευσέ την στη μεταβλητή frontDistance
-  int leftDistance = sonarLeft.getMedianDistance(3);
-  int rightDistance = sonarRight.getMedianDistance(3);
+  int frontDistance = sonarFront.getMedianDistance(6); //μέτρησε την απόσταση (φιλτράρισε 6 μετρήσεις) και αποθήκευσέ την στη μεταβλητή frontDistance
+  int leftDistance = sonarLeft.getMedianDistance(6);
+  int rightDistance = sonarRight.getMedianDistance(6);
   bluetooth.print(frontDistance); //εκτύπωσε τις αποστάσεις με την εξής μορφή: μπροστινήΑπόσταση,αριστεράΑπόσταση,δεξιάΑπόσταση
   bluetooth.print(",");
   bluetooth.print(leftDistance);
@@ -51,32 +51,42 @@ void loop() {
   //το αυτοκινητάκι όταν κινείται στην πίστα!
   if (leftDistance == 0 && rightDistance == 0) {
     folkracer.setAngle(0);
+    bluetooth.println("pigainei efthia");
   }
   if (rightDistance < 30 && rightDistance > 0 && leftDistance < 30 && leftDistance > 0) {
     folkracer.setAngle(0);
+    bluetooth.println("pigainei efthia");
   }
   if (rightDistance < 30 && rightDistance > 0 && leftDistance == 0) {
     folkracer.setAngle(-60);
+    bluetooth.println("strivei aristera 1");
   }
   if (rightDistance > 30 && leftDistance == 0) {
     folkracer.setAngle(0);
+    bluetooth.println("pigainei efthia");
   }
   if (leftDistance < 30 && leftDistance > 0 && rightDistance == 0) {
     folkracer.setAngle(60);
+    bluetooth.println("strivei dexia 1");
   }
   if (rightDistance > 30 && leftDistance < 30 && leftDistance > 0) {
     folkracer.setAngle(60);
+    bluetooth.println("strivei dexia 1");
   }
   if (rightDistance == 0 && leftDistance > 30) {
     folkracer.setAngle(0);
+    bluetooth.println("pigainei efthia");
   } 
   if (rightDistance < 30 && rightDistance > 0 && leftDistance > 30) {
     folkracer.setAngle(-60);
+    bluetooth.println("strivei aristera 1")
   }
   if (rightDistance > 30 && leftDistance > 30) {
     folkracer.setAngle(0);
+    bluetooth.println("pigainei efthia");
   }
   if (frontDistance < 20 && frontDistance > 0) {
     folkracer.setAngle(80);
+    bluetooth.println("strivei dexia 2")
   }
 }
