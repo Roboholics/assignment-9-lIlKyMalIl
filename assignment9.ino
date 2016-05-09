@@ -49,9 +49,6 @@ void loop() {
   //Εάν βρίσκει εμπόδιο μπροστά σε κοντινή απόσταση, ας στρίβει προς τα δεξιά κατά 75 μοίρες, με το setAngle.
   //Στο σχολείο, να διαβάζετε (στο serial monitor του Arduino IDE) τις αποστάσεις που ανιχνεύει το αυτοκινητάκι ασύρματα μέσω bluetooth, έτσι ώστε να καταλάβετε τι "διαβάζει"
   //το αυτοκινητάκι όταν κινείται στην πίστα!
-  if (frontDistance < 20 && frontDistance > 0) {
-    folkracer.setAngle(80);
-  }
   if (leftDistance == 0 && rightDistance == 0) {
     folkracer.setAngle(0);
   }
@@ -64,7 +61,7 @@ void loop() {
   if (rightDistance > 30 && leftDistance == 0) {
     folkracer.setAngle(0);
   }
-  if (leftDistance < 30 && leftDistance > 0 && rightDistance == o) {
+  if (leftDistance < 30 && leftDistance > 0 && rightDistance == 0) {
     folkracer.setAngle(60);
   }
   if (rightDistance > 30 && leftDistance < 30 && leftDistance > 0) {
@@ -78,5 +75,8 @@ void loop() {
   }
   if (rightDistance > 30 && leftDistance > 30) {
     folkracer.setAngle(0);
+  }
+  if (frontDistance < 20 && frontDistance > 0) {
+    folkracer.setAngle(80);
   }
 }
