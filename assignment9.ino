@@ -51,11 +51,11 @@ void loop() {
   //το αυτοκινητάκι όταν κινείται στην πίστα!
   if (leftDistance == 0 && rightDistance == 0) {
     folkracer.setAngle(0);
-    bluetooth.println("pigainei efthia");
+    bluetooth.println("pigainei efthia 1");
   }
   if (rightDistance < 30 && rightDistance > 0 && leftDistance < 30 && leftDistance > 0) {
     folkracer.setAngle(0);
-    bluetooth.println("pigainei efthia");
+    bluetooth.println("pigainei efthia 2");
   }
   if (rightDistance < 30 && rightDistance > 0 && leftDistance == 0) {
     folkracer.setAngle(-60);
@@ -63,7 +63,7 @@ void loop() {
   }
   if (rightDistance > 30 && leftDistance == 0) {
     folkracer.setAngle(0);
-    bluetooth.println("pigainei efthia");
+    bluetooth.println("pigainei efthia 3");
   }
   if (leftDistance < 30 && leftDistance > 0 && rightDistance == 0) {
     folkracer.setAngle(60);
@@ -75,7 +75,7 @@ void loop() {
   }
   if (rightDistance == 0 && leftDistance > 30) {
     folkracer.setAngle(0);
-    bluetooth.println("pigainei efthia");
+    bluetooth.println("pigainei efthia 4");
   } 
   if (rightDistance < 30 && rightDistance > 0 && leftDistance > 30) {
     folkracer.setAngle(-60);
@@ -83,7 +83,7 @@ void loop() {
   }
   if (rightDistance > 30 && leftDistance > 30) {
     folkracer.setAngle(0);
-    bluetooth.println("pigainei efthia");
+    bluetooth.println("pigainei efthia 5");
   }
   if (frontDistance < 20 && frontDistance > 0) {
     folkracer.setAngle(80);
