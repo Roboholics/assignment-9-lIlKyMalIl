@@ -1,6 +1,6 @@
 #include <Smartcar.h>
 #include <SoftwareSerial.h>
-
+//
 Odometer encoderLeft(190), encoderRight(190); //Βάλτε τους δικούς σας παλμούς ανά μέτρο
 Gyroscope gyro(5); //Βάλτε την κατάλληλη τιμή σύμφωνα με το γυροσκόπιό σας
 Car folkracer;
@@ -26,10 +26,10 @@ void setup() {
   encoderLeft.begin();//ξεκινάει τις μετρήσεις στον encoder
   encoderRight.begin();
   folkracer.begin(encoderLeft, encoderRight, gyro); //ξεκινάει το αυτοκίνητο χρησιμοποιώντας τα encoders και το γυροσκόπειο
-  folkracer.enableCruiseControl(); //ξεκινάει τον έλεγχο της ταχύτητας του αυτοκινήτου
+  //folkracer.enableCruiseControl(); //ξεκινάει τον έλεγχο της ταχύτητας του αυτοκινήτου
   gyro.begin(); //ξεκινάει τις μετρήσεις στο γυροσκόπειο
   /* Εάν θέλετε να διαβάσετε απλά τις αποστάσεις, δίχως να κινείται το αυτοκινητάκι, βάλτε ταχύτητα 0 στην παρακάτω γραμμή */
-  folkracer.setSpeed(0.2); //θέτει την ταχύτητα στο αυτοκινητάκι στα 0.2 μέτρα ανά δευτερόλεπτο (εάν είναι πολύ αργό, αυξήστε λίγο την ταχύτητα)
+  folkracer.setSpeed(50); //θέτει την ταχύτητα στο αυτοκινητάκι στα 0.2 μέτρα ανά δευτερόλεπτο (εάν είναι πολύ αργό, αυξήστε λίγο την ταχύτητα)
   folkracer.setAngle(0); //Το αυτοκινητάκι πηγαίνει ευθεία
 }
 
@@ -76,17 +76,17 @@ void loop() {
   if (rightDistance == 0 && leftDistance > 30) {
     folkracer.setAngle(0);
     bluetooth.println("pigainei efthia 4");
-  } 
+  }
   if (rightDistance < 30 && rightDistance > 0 && leftDistance > 30) {
     folkracer.setAngle(-60);
-    bluetooth.println("strivei aristera 1")
+    bluetooth.println("strivei aristera 1");
   }
   if (rightDistance > 30 && leftDistance > 30) {
     folkracer.setAngle(0);
     bluetooth.println("pigainei efthia 5");
   }
-  if (frontDistance < 20 && frontDistance > 0) {
-    folkracer.setAngle(80);
-    bluetooth.println("strivei dexia 2")
-  }
+//  if (frontDistance < 20 && frontDistance > 0) {
+//    folkracer.setAngle(80);
+//    bluetooth.println("strivei dexia 2");
+//  }
 }
